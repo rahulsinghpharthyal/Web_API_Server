@@ -5,14 +5,15 @@ import cloudinary from "cloudinary";
 const storage = multer.memoryStorage();
 
 // Configure Cloudinary
-cloudinary.v2.config({
-    cloud_name: "dg56sdt6k", //'your_cloud_name',
-    api_key: "688781267938525", //'your_api_key',
-    api_secret: "v3ChT2nD-GN9F0j-9_Xasnusruw", //'your_api_secret'
-});
+
 
 
 const uploadDocuments = async (fileBuffer) => {
+    cloudinary.v2.config({
+        cloud_name: process.env.cloud_name, //'your_cloud_name',
+        api_key: process.env.api_key, //'your_api_key',
+        api_secret: process.env.api_secret, //'your_api_secret'
+    });
     console.log("this is file from cloudinary", fileBuffer);
     const options = {
         use_filename: true,
